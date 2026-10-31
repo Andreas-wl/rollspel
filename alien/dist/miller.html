@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="sv"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Miller – USCSS Montero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{--bg:#0b100d;--panel:#121a15;--line:#24382b;--fg:#d9e4dc;--muted:#8aa394;--accent:#7dffa8;--warn:#ffb547;--danger:#ff6b5e;
+--mono:"Share Tech Mono",ui-monospace,Consolas,monospace;--serif:"Source Serif 4",Georgia,serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 var(--serif);-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right))}
+h1,h2,h3,.mono{font-family:var(--mono);font-weight:400;letter-spacing:.08em}
+h2{font-size:1rem;text-transform:uppercase;color:var(--accent);margin:32px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+p{margin:.6em 0}
+strong{color:#fff}
+.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;font:12px var(--mono);letter-spacing:.2em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
+.top b{color:var(--accent);font-weight:400}
+.hero{padding:24px 0 4px}
+.hero h1{font-size:2.2rem;margin:0;color:var(--accent);line-height:1.1}
+.hero .sub{font:14px var(--mono);color:var(--muted);letter-spacing:.1em;margin-top:4px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0 0}
+.facts div{background:var(--panel);border:1px solid var(--line);padding:8px 10px}
+.facts dt{font:11px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0}
+/* trackers */
+.track{background:var(--panel);border:1px solid var(--line);padding:12px 14px;margin-bottom:12px}
+.track .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.track .lbl{font:14px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.track .ctl{display:flex;align-items:center;gap:6px}
+.track button{all:unset;cursor:pointer;width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--line);font:24px var(--mono);color:var(--fg);touch-action:manipulation}
+.track button:active{background:var(--line)}
+.track output{font:30px var(--mono);min-width:56px;text-align:center}
+.pips{display:flex;gap:4px;margin-top:10px}
+.pips i{flex:1;height:10px;border:1px solid var(--line)}
+.health .pips i.on{background:var(--accent);border-color:var(--accent)}
+.stress .lbl,.stress output{color:var(--warn)}
+.stress .pips i.on{background:var(--warn);border-color:var(--warn)}
+.stress.high .pips i.on{background:var(--danger);border-color:var(--danger)}
+.track .hint{font-size:.9rem;color:var(--muted);margin:10px 0 0}
+/* attributes */
+.attr{background:var(--panel);border:1px solid var(--line);margin-bottom:10px}
+.attr header{display:flex;justify-content:space-between;align-items:baseline;padding:10px 14px 0}
+.an{font:15px var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.av{font:28px var(--mono);color:var(--accent)}
+.ah{margin:0;padding:0 14px 6px;color:var(--muted);font-size:.92rem}
+.attr ul{list-style:none;margin:0;padding:0}
+.attr li{border-top:1px solid var(--line)}
+.attr summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 28px 52px;gap:8px;align-items:center;padding:12px 14px;min-height:48px}
+.attr summary::-webkit-details-marker{display:none}
+.attr summary span::after{content:" ›";color:var(--muted)}
+.attr details[open] summary span::after{content:" ⌄"}
+.attr summary b{font:18px var(--mono);font-weight:400;text-align:right}
+.attr summary em{font:14px var(--mono);font-style:normal;color:var(--muted);text-align:right}
+.attr li.zero summary{color:var(--muted)}
+.attr details p{margin:0;padding:0 14px 12px;color:var(--muted);font-size:.95rem}
+/* cards */
+.card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);padding:6px 16px 10px;margin-bottom:12px}
+.card h3{font-size:.95rem;text-transform:uppercase;color:var(--accent);margin:8px 0 0}
+.card .en{font:12px var(--mono);color:var(--muted)}
+details.rule{border-top:1px solid var(--line)}
+details.rule:last-of-type{border-bottom:1px solid var(--line)}
+details.rule summary{cursor:pointer;padding:12px 0;font:14px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--warn);min-height:44px}
+details.rule ul{padding-left:1.2em;margin:0 0 12px}
+details.rule li{margin:4px 0}
+.note{display:block;margin:.8em 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--warn);background:var(--bg);font-size:.95rem}
+textarea{width:100%;min-height:120px;background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:10px;font:16px var(--serif);resize:vertical}
+/* secrets */
+.unlock{display:flex;gap:8px}
+.unlock input{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);color:var(--fg);font:18px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:10px 12px}
+.unlock button{font:14px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:var(--bg);border:0;padding:0 16px;cursor:pointer}
+.msg{font:13px var(--mono);min-height:1.4em;margin:6px 0 12px;color:var(--muted)}
+.msg.bad{color:var(--danger)} .msg.ok{color:var(--accent)}
+.secret{scroll-margin-top:70px;border-left-color:var(--danger);animation:in .5s ease-out}
+.secret .stamp{font:11px var(--mono);letter-spacing:.2em;color:var(--danger);text-transform:uppercase;margin-top:8px}
+.secret.infected{border-left-color:#c33;background:#1a0f0f}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+button:focus-visible,input:focus-visible,summary:focus-visible,textarea:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+.foot{margin-top:28px;font:12px var(--mono);color:var(--muted);text-align:center}
+.foot button{all:unset;cursor:pointer;text-decoration:underline}
+</style></head><body>
+<div class="top"><span>USCSS Montero</span><b>Befäl</b></div>
+<main class="wrap">
+  <section class="hero">
+    <h1>MILLER</h1>
+    <div class="sub">Vanessa Miller · Kapten på USCSS Montero</div>
+    <dl class="facts">
+      <div><dt>Ålder</dt><dd>46</dd></div>
+      <div><dt>Personlighet</dt><dd>Sparsam</dd></div>
+      <div><dt>Vän</dt><dd>Davis</dd></div>
+      <div><dt>Rival</dt><dd>Wilson</dd></div>
+    </dl>
+  </section>
+
+  <h2>Status</h2>
+  <div class="track health" data-k="health" data-max="4">
+    <div class="row"><span class="lbl">Hälsa</span><span class="ctl"><button aria-label="Minska hälsa">−</button><output>4</output><button aria-label="Öka hälsa">+</button></span></div>
+    <div class="pips"></div>
+    <p class="hint">Max 4. Når du 0 är du <strong>bruten</strong> och slår på tabellen för kritiska skador.</p>
+  </div>
+  <div class="track stress" data-k="stress" data-max="10">
+    <div class="row"><span class="lbl">Stress</span><span class="ctl"><button aria-label="Minska stress">−</button><output>0</output><button aria-label="Öka stress">+</button></span></div>
+    <div class="pips"></div>
+    <p class="hint">Lägg till lika många <strong>stresstärningar</strong> som din stress när du slår. Visar någon stresstärning en <strong>1:a</strong> får du göra ett panikslag.</p>
+  </div>
+
+  <h2>Vem du är</h2>
+  <p>Du är trött på att vara en kugge i bolagsmaskineriet och vill ut. Om du bara kunde få ihop tillräckligt med pengar för ett eget skepp skulle du äntligen kunna styra ditt eget öde i Gränslandet.</p><p>Bolaget har erbjudit dig att leasa Montero med köpoption, men det är ingen idé om du inte har råd att rusta upp henne för bättre fraktuppdrag. Utan en motoruppgradering som låter henne bogsera större laster förlorar du tusentals dollar varje dag. Du måste hitta ett sätt att tjäna tillräckligt för att leasa Montero och uppgradera henne – eller ännu hellre bli självständig och ersätta henne med ett nyare skepp.</p>
+
+  <h2>Att slå tärning</h2>
+  <details class="rule"><summary>Så funkar ett slag</summary><ul>
+    <li>Slå lika många T6 som <strong>grundegenskap + färdighet</strong> (T6-siffran längst till höger nedan).</li>
+    <li>Varje <strong>6:a</strong> är ett lyckat resultat. Du behöver minst en.</li>
+    <li>Fler 6:or ger extra effekter, till exempel mer skada eller snabbare.</li>
+  </ul></details>
+  <details class="rule"><summary>Pressa slaget</summary><ul>
+    <li>Misslyckades du? Du får slå om alla tärningar som inte visar 6.</li>
+    <li>Det kostar <strong>+1 stress</strong> först, och du slår med den nya stressnivån.</li>
+  </ul></details>
+  <details class="rule"><summary>Stress och panik</summary><ul>
+    <li>Du får stress när du pressar slag, skjuter med automatvapen, ser hemska saker och när SL säger det.</li>
+    <li>Stresstärningar ger fler chanser till 6:or men varje <strong>1:a</strong> = panikslag (T6 + din stress).</li>
+    <li>Stress sjunker när du vilar på en säker plats eller med SL:s tillåtelse.</li>
+  </ul></details>
+
+  <h2>Grundegenskaper &amp; färdigheter</h2>
+  <p class="mono" style="font-size:13px;color:var(--muted)">Tryck på en färdighet för att läsa vad den används till.</p>
+  
+    <section class="attr">
+      <header><span class="an">Styrka</span><span class="av">4</span></header>
+      <p class="ah">Råstyrka och fysisk tålighet.</p>
+      <ul><li class="zero"><details><summary><span>Tunga maskiner</span><b>0</b><em title="Tärningar att slå">4 T6</em></summary><p>Köra Power Loader, lyfta tungt, bända upp dörrar, reparera grova maskiner.</p></details></li><li class="zero"><details><summary><span>Närstrid</span><b>0</b><em title="Tärningar att slå">4 T6</em></summary><p>Slåss med knytnävar, knivar och tillhyggen.</p></details></li><li class="zero"><details><summary><span>Uthållighet</span><b>0</b><em title="Tärningar att slå">4 T6</em></summary><p>Stå emot kyla, svält, hårt arbete och smärta. Används när du är nära att dö.</p></details></li></ul>
+    </section>
+    <section class="attr">
+      <header><span class="an">Smidighet</span><span class="av">3</span></header>
+      <p class="ah">Kroppskontroll, snabbhet och motorik.</p>
+      <ul><li class=""><details><summary><span>Avståndsstrid</span><b>1</b><em title="Tärningar att slå">4 T6</em></summary><p>Skjuta med pistoler, gevär, eldkastare och bultpistoler.</p></details></li><li class=""><details><summary><span>Rörlighet</span><b>1</b><em title="Tärningar att slå">4 T6</em></summary><p>Fly, klättra, smyga, ta skydd, ta sig loss ur grepp.</p></details></li><li class=""><details><summary><span>Pilot</span><b>2</b><em title="Tärningar att slå">5 T6</em></summary><p>Flyga skepp och köra fordon under press.</p></details></li></ul>
+    </section>
+    <section class="attr">
+      <header><span class="an">Skarpsinne</span><span class="av">2</span></header>
+      <p class="ah">Uppfattning, intelligens och mental skärpa.</p>
+      <ul><li class=""><details><summary><span>Observation</span><b>2</b><em title="Tärningar att slå">4 T6</em></summary><p>Upptäcka faror, lyssna, läsa av rörelsedetektorn, upptäcka smygande fiender.</p></details></li><li class="zero"><details><summary><span>Överlevnad</span><b>0</b><em title="Tärningar att slå">2 T6</em></summary><p>Klara sig i fientliga miljöer, hitta vägen, hantera vakuum och gifter.</p></details></li><li class="zero"><details><summary><span>Teknik</span><b>0</b><em title="Tärningar att slå">2 T6</em></summary><p>Reparera elektronik, hacka system, använda datorer och MOTHER.</p></details></li></ul>
+    </section>
+    <section class="attr">
+      <header><span class="an">Empati</span><span class="av">5</span></header>
+      <p class="ah">Personlig utstrålning och förmåga att påverka andra.</p>
+      <ul><li class=""><details><summary><span>Befäl</span><b>3</b><em title="Tärningar att slå">8 T6</em></summary><p>Ge order, få andra att agera i kris, hjälpa någon som har panik.</p></details></li><li class="zero"><details><summary><span>Manipulation</span><b>0</b><em title="Tärningar att slå">5 T6</em></summary><p>Övertala, ljuga, hota och förhandla.</p></details></li><li class=""><details><summary><span>Sjukvård</span><b>1</b><em title="Tärningar att slå">6 T6</em></summary><p>Ge första hjälpen, stoppa blödningar, behandla kritiska skador.</p></details></li></ul>
+    </section>
+
+  <h2>Talang</h2>
+  <div class="card"><h3>Utnyttja rang</h3><div class="en">Pull Rank</div><p>Du kan slå för <strong>BEFÄL</strong> för att ge order till någon med lägre rang än du – både SLP:er och andra rollpersoner. Lyckas du måste personen lyda, eller (om det är en rollperson) ta 1 stress för att vägra.</p></div>
+
+  <h2>Personligt föremål</h2>
+  <div class="card"><p>Jackmärke med Weyland-Yutanis logga</p></div>
+
+  <h2>Från MOTHER</h2>
+  <p>Ibland får du en kod av spelledaren. Skriv in den här för att läsa meddelandet. Visa det inte för de andra.</p>
+  <form class="unlock" id="unlock" autocomplete="off"><input id="code" aria-label="Kod" placeholder="KOD" autocapitalize="characters" spellcheck="false"><button>Öppna</button></form>
+  <div class="msg" id="msg" role="status"></div>
+  <div id="secrets"></div>
+
+  <h2>Anteckningar</h2>
+  <textarea id="notes" placeholder="Saker du vill komma ihåg..."></textarea>
+
+  <div class="foot">Sparas bara i den här telefonen · <button id="reset">Nollställ sidan</button></div>
+</main>
+<script>
+const ID="miller",KEY='alien:'+ID+':',ITER=60000;
+const BLOBS=[{"s":"C81PtZ6O9d+KER9n3v547w==","i":"Jci96Pw6I1vsCKm5","c":"eT70XtSbUoZmt4b8KbYu0XX3Qc7azLt/qvfPmowawKSpEc0jeNIKfTXwtDlhzLbNEZRosaVCeXIKHWnGJyr14nLxYZc11siBYi13mmR9FfsH5Ry3lP84ej5VWzmoaY5tRusw2jQmT68dhkx3f2PsYQad+Wg/IgxZyUe2KQtzx3uJuBUNU2N95xcpo/3W0VqK99PJnteBFYunZBhN9K1JGAJ5xRKP6lHYnouMEjVRR32dOHO8u0YAwaJY4/VMxOhUZD7DTkIFkXubV/tIedpRyVpl/x/6/6OwLd2BPg=="},{"s":"aFcTUMkrWgqhDptFYOf7dQ==","i":"+hCW/Kjq6Eb5Bsov","c":"i1SHv6m6cu9JJbF5DQZ7GmMKfzRcRCUHzslwkzUMHRhcP5nshpaA44EFUsoLv/WbUFKb9MwYxXf9xwTDLX0of4uuAAUHM0LJyhcdhW6DXWOrO+pfPzNpTMWco0QuhV1/TRO7bQbVFshbqINECA2g0tcN07C/Bp+zCGg8zCVNCCpTr43uuUfFzSyH+K5ng5YErQJRDEZY5Kr2AoHvAYtSog11xpc2XE7OZhUzwxriaoAVyVJcimlfNuUQrsF8axZ9kqpfYMlHuJCySacNzEqp8n8INA8O+6pzT4KJl9QcNtRZm7H78m70AlD9cb6sAFAovxVfv0u9Chg6+LTafTSFc9OqDH8sMdCzhyv+luFZirkg+Xn4yD8U4MZkehC/Yg=="},{"s":"UGw66P8GLkjyqZWz73pqmA==","i":"wBTT67XdKn/JBddW","c":"jdnFZHvyn5qjVyONoVLSIItHScNhL9VwoDRR5k+luIjQMv1VpLy+vwspQ35QRjcD4UvRJ/fCR9pRUcz13UjahwhneMw+bRk/YlhLZfCum8whES9VYF9dNVAsuvl7H46oCZsGMk6NRPkAv0NWGWREWPF7CqhmeAjI/lPlLIF1sBytMKH+N3e+awqltYuH9y3Enh9i6V5fqSs8SSY5vFtlBEG4lulsShgZ/BsvmNWY8/70wfC+LtAro3dTOSjai/ieFDGfOUZoSUHT3y4+XbV2GJbdcjPBz56VoVrLJTWk1XOtjAxaxWrtHKIOa3UyQdj2MsSIk8Y1MfyFAXqmz++mzNKQeozexVXBdalv0N7YrjTEYQxkmMdgSu1HbLcGJi57p4c2wG+nEOttoUdR0AZAbws9fp1y9ybCN/Oq2g9F6qqrQHCVXXLt8oRp7FWSXoZ4Ld4zyBYMRO6MEJ3UZ9eLV+Hl9gsjXTfUnhQUfGhjQwDNoUQ0g5Gkfd5uWdf2wIZrZZeIDE+CuasaHbnRZWaXqxUi/rBjFNgtm8VWnbxKRmor9IOd/MQ67ymOU15P73sb0CYU7zI6R0AkydUMt9QVLhUucMimudPuxHVK8rfN7U8+SmJ41GlEBKVqkdv/aXcduuRRn2SF5k2gT1ysyWxF+qscvzNSxoc+MD+nWAaj4NGnZ1i9NkcfGkppiPM4JEAVrfs/n0/DDH+FuvyvwXrW/vVFfuJx4CAXKNp8XrggSCKqjcIxLfvkLSGeGWoyq5qvWvJJ8elqzbCg4UXX6oV0dgjozUMX5sxHhZMs+Ea0s5QfPYPN/DmpR9C2hT4ZSsd7DMl2gULiEDpQR+QHfWeuGl7B4LqhKr1Tdw7NMJ2xK245V7IiXm2AfIrN0x+Z/3cXVodcGjVla0oE6KKcF4lejLyikHqQfSG8qrc0W6K1QESeWLawRI8DO4+JmzEoKtE6MdXTVr5vFF2pwOpuJ15XBA0wVfYI2sW7/3ht5SD+hma3qqjymwbdblvj2XKkKLTxikd+nMgzrrBPIBB0vbQKRpRl0CaLwbZFbXApyMSPVrFdCpXCakBPPCShdXuGkwI0H6sRW2j4VkLIpOQC"},{"s":"NV0vjaj1OjVuurwS5PcRFQ==","i":"bcCPkZZwjy5HmEmc","c":"ORT/DqrfRW7Nb1zcJKVOxrKXVL+0YujJE1DQm6q5/pa0xzvYM9eUL+4bbPt8WwoSFB+p8jo8dYwNQOyH5XycLbr9v4dAKvE3M4biP5proBvzdpK2+avWgEUXi8CmvMaNaMQQspToTZEWhtqrRulvQPyNBcLePqG+RbhV9LJfMHAKmrULGnD+LI+45wbmcQYeAxOsrDGLjIrABudYZSipAvFuT2l73Fq0jE8Wo7qtFNTfMBvHQ8azjE7fhiQEO9vTJt25I7GQ/Oa0743sSr91Zj45QsbuKx+SXemt3LLHUMLf/bs="},{"s":"9IlE/xrzEgZAC4gHL1HvFg==","i":"0Nau8iYoFdvetNKq","c":"AIm03lJ2eIZA6//p+s+lPe/skYyUtngpuC5EmuzVBbZkmEpt9c24aajAShJvag0+5XaF9HihkS/nlW/36GN+qOHugNIfqfgBlkK1My25T13YvmTQsw4OUWflJqbkHJu8Zf3XrcHmTai16EZ9flcXu9S6ttsOWPkjavdlyiub6RxPA2i0c8/it78p5eL2Q2TIwkS5YuDUUHeRkxhEWQqs2MB+uhRxOHazCUpZjuhdjFD3UU8274uRRJqYM1uNB2OaI6kuP4IdZ0qcujGMaS9Ukv9vCDJtX+jINSflA+2PqmwBlvkG9655vFxput95qWSc9stUbKW2uD8zmSKB0w4mvH3VW2GVZEeVMmcH7ubA+aYJs9diayUMpJspRP+dgEntbyaDgabhfuOO5FROxWDTAabzDeYq4I0E03vKA5K+jqM6j7XXUMe0iTN+dZB7rKtF+MUASCSPjBx8/co2qV9/PBZpwNWAFh1ofAmDVO+ugSiYGrXSkHJJWzVLJfskkSOJPmHZblLda6wIMjT9WpWu/uhKLcugFzrxjpJYaD5qRUyPeGtku+a4yki/a+2BDxTVAUWqhdeNGSPqYzS+LnHMYAm5ZGfjmw0eU53J/TmaEKz2OSKtL4JsLY+EGsApNsYS6oeKlES8EAcwUdIKqqR2KcwndsuKCKX3RU++6eIJ488h2eyuNh9LeyNpAUc+A7F/fqjadlXh+6AXQ173bXQBySI3fKnD3LumfLb/8CzsMkNf07Taq57PuQpQXfTczlPBFxwYXNsZrJtm4VTgkeKSjvpTT/mX0GZyVps322ChItnaGA83f7s/n1ZU2I0fg4SffH2/206UR9K8ZeMZmXCTpBqm06hWO1WZx41rjW88kthnML9uoQcvohysKtbYI3tcJ1dn3PVWy/zhGtv3VrIVX02oYIl6JDGhz655icBg+bnIHfucnv72y8DBCgbALOQxDrGms7QxnAe9LDSP7Uhbg/KAXFpftxqJ3dttx0XGCqi+si9dk1uAOF/CvGG21SjAKY/R3baco8+9S4y1fvVu8oOoz8NAHt+aMKmxN+7+q9NNYKF6hDbH4CTkZVc0GdRZl9u7BQJV7p7kZInRxQr+0dG7MuSTkXSU/K8ue/5WosOuhPfpzw4OzlBsdfVynRcFjg1Ch2pfb3xXDtp0TAE91nKYrsJY5oUv8qdZ0S7Bv0jgaXKNJ56kJeXskkEvXXfCIyrbiLk2uMfpoVtDU5VFZgKawWwQ4ycdxK7GT0d4r4GT8liQhSMNR+nmsq2hjNdlmHqZ7vIq+eJr6ZG27X6fnTZserh1oC4AXTJfdP2q+rg7hYil0NVywVrtAZnMi7ACbII341ChhOJ7U/DF6pfExQNFNO7W29MHdtMDLGpsIdYr6ut13W/oqk6aAgdKHTxFun5Hj8Px5vYuYZKiQwEIsEIMDsD9BqtRVhT7Ta+9emf7SVHxQJP/hRTUtMlVsjAp9jEKksYzTfn9hEjcN2jKBSz7vUyWckgtZqp/lNO/oq7Fi+evGLcKV/Zqfi+9qBjyaM9ev0nQTBcvemkJjjQaKafkawgjzwLoIlIqLxxaQj4WiqZrEacwBCjHIsEFMA=="},{"s":"eHjZYsZ9VqhFiBepumJ2qQ==","i":"8PECL23zy0Nx1BfO","c":"ZPiY7jcC7kdNA5XRgK+OH0Yy9HxzkdfsNTNoP8P4IEjzqsk2B/dxh1UduNvl0yISA83bycZTo4Ci6SP1mvYdqP2qHhF1Dg+abQKpGVTqSTGWTwDclqQY4Ffd+YXZ47s/HmgMVsPkNcOwbysghTHwd/XbT5aPkKgTffCt8sVvhacoObl2ahuG9FX4sLEU2QlZc5WkRwKUz/F1r788twXcnoUo+k/cRbjgIEssgf96RQABqcICDkqtILt9Q/mvANqwqqLvUrcM6KHMF3L7Ub75hSSp9Pf/F7EzeaokRhPPUoWPEaXJ2bywVTlxNY3ZS5Uno5o7xpb4c8W8C5TLr2bxqJ/+mp4OPAE5ixCJbNEyPbCxQHxqVVdqMGc80eGCRXNKitfkY6uHoPDlKTqIuFTB0JWc6k+3qWXrKZWFxZmqVaOqZlqq"},{"s":"ykfK/LoXWuJxsEIUvwhRYA==","i":"wV5/3d6N6UoZAApD","c":"c3xyQCBimAJ27P6mjQjzBzbzmmp08uQAr2pjnY7RfjPTyvwskS+vmoJPAsyXq1L39ZKjA3wexnU1/eSUv9SJTwNrV6xjONCK/bsmTanP1TlRFTXNt0+eStweqvnfX42xOdX18nBLoRvg81S/OXL8jlngJnsgqEhY4i9i3QxhildI9Kd+kcajg4SSBU1Zb5oWmGIlHtQzxd9gkfgqogIK2cddu+VwCP0YunnehyOQJwiQqxarY2cY4J299YBWNz0UCGEG5fJ4NufKZt//JXwGY/Mz7FCKHihOuuLkay/UhxktnLSu5QvU5PEnQWozqT49MVlBKbNgVtRRUlFGAq/bwnJm+0kmGL6Z1AUyrFep5GlqOvqk9d/8Mko5y9rkV9X8upYKcOftudMNUYGJ7jeL5Okhfch9K4Jl3nPzlJVduhmhqtJ/7o0m+DbDJr+eInrkY+1AUkJU/JT1kk71b303xs+7XrYNWywYEBRndKewELcjylHURiD2SZYE7Kq8ufKywd6bO9YaLrGr1slfIZ8hyBC2lKnRhfBM"}];
+const ls={get(k,d){try{const v=localStorage.getItem(KEY+k);return v===null?d:JSON.parse(v)}catch{return d}},set(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch{}}};
+// trackers
+document.querySelectorAll('.track').forEach(t=>{
+  const k=t.dataset.k,max=+t.dataset.max,out=t.querySelector('output'),pips=t.querySelector('.pips');
+  let v=ls.get(k,k==='health'?max:0);
+  pips.innerHTML='<i></i>'.repeat(max);
+  const draw=()=>{out.textContent=v;[...pips.children].forEach((p,i)=>p.classList.toggle('on',i<v));if(k==='stress')t.classList.toggle('high',v>=7);ls.set(k,v)};
+  const [minus,plus]=t.querySelectorAll('button');
+  minus.onclick=()=>{v=Math.max(0,v-1);draw()};plus.onclick=()=>{v=Math.min(max,v+1);draw()};
+  draw();
+});
+// notes
+const notes=document.getElementById('notes');notes.value=ls.get('notes','');notes.oninput=()=>ls.set('notes',notes.value);
+// secrets
+const ub=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const norm=c=>c.trim().toUpperCase().replace(/\s+/g,'-');
+async function tryOpen(code,b){
+  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(code),'PBKDF2',false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:ub(b.s),iterations:ITER,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+  try{return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:ub(b.i)},key,ub(b.c))))}catch{return null}
+}
+const box=document.getElementById('secrets'),msg=document.getElementById('msg');
+function show(s){
+  const d=document.createElement('div');d.className='card secret'+(s.kind==='infected'?' infected':'');d.id='sec-'+s.n;
+  d.innerHTML='<div class="stamp">'+({infected:'⚠ Biologisk varning',map:'Kartdata · MU/TH/UR',sl:'Spelledare'}[s.kind]||'Endast för dina ögon')+'</div><h3></h3>'+s.html;
+  d.querySelector('h3').textContent=s.title;
+  const all=[...box.children];const after=all.find(x=>+x.id.slice(4)>s.n);box.insertBefore(d,after||null);return d;
+}
+async function find(code){for(const b of BLOBS){const s=await tryOpen(code,b);if(s)return s}return null}
+let codes=ls.get('codes',[]);
+(async()=>{for(const c of codes){const s=await find(c);if(s&&!document.getElementById('sec-'+s.n))show(s)}})();
+document.getElementById('unlock').onsubmit=async e=>{
+  e.preventDefault();const inp=document.getElementById('code');const code=norm(inp.value);if(!code)return;
+  msg.className='msg';msg.textContent='Kontaktar MOTHER…';
+  const s=await find(code);
+  if(!s){msg.className='msg bad';msg.textContent='ÅTKOMST NEKAD. Okänd kod.';return}
+  inp.value='';
+  if(document.getElementById('sec-'+s.n)){msg.className='msg ok';msg.textContent='Redan öppnad.';document.getElementById('sec-'+s.n)?.scrollIntoView({behavior:'smooth'});return}
+  codes.push(code);ls.set('codes',codes);
+  msg.className='msg ok';msg.textContent='Meddelande mottaget.';
+  show(s).scrollIntoView({behavior:'smooth',block:'start'});
+};
+document.getElementById('reset').onclick=()=>{if(!confirm('Nollställa hälsa, stress, anteckningar och öppnade meddelanden?'))return;
+  try{Object.keys(localStorage).filter(k=>k.startsWith(KEY)).forEach(k=>localStorage.removeItem(k))}catch{};location.reload()};
+</script>
+</body></html>
