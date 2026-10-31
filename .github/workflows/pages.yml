@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: mkdir -p _site/alien && cp -r alien/dist/. _site/alien/
+      - run: mkdir -p _site/drakar && cp -r drakar/dist/. _site/drakar/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }

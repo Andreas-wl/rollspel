@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="sv"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Krisanna – Det sjunkande tornet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>:root{--bg:#14120e;--panel:#211c15;--line:#3d3426;--fg:#eee4d0;--muted:#ad9f88;--accent:#62c9b2;--warn:#e7b65c;--danger:#ef6a58;--on:#14120e;
+--head:"Cinzel",Georgia,serif;--serif:"Source Serif 4",Georgia,serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 var(--serif);-webkit-text-size-adjust:100%}
+a{color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left)) calc(40px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right))}
+h1,h2,h3{font-family:var(--head);font-weight:700}
+h2{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:32px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+p{margin:.6em 0}
+strong{color:#fff}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 16px 10px;font:600 13px var(--head);letter-spacing:.06em;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.top a{text-decoration:none;min-height:24px}.top b{color:var(--accent)}
+.hero{padding:24px 0 4px}
+.hero h1{font-size:1.9rem;margin:0;color:var(--accent);line-height:1.15}
+.hero .sub{color:var(--muted);margin-top:4px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 0}
+.facts div{background:var(--panel);border:1px solid var(--line);padding:8px 10px;min-width:0}
+.facts dt{font-size:12px;color:var(--muted)}
+.facts dd{margin:0;font-weight:600;font-size:1.15rem}
+.track{background:var(--panel);border:1px solid var(--line);padding:12px 14px;margin-bottom:12px}
+.track .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.track .lbl{font:700 15px var(--head)}
+.track .ctl{display:flex;align-items:center;gap:6px}
+.track button{all:unset;cursor:pointer;width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--line);font-size:24px;touch-action:manipulation}
+.track button:active{background:var(--line)}
+.track output{font-size:28px;font-weight:600;min-width:52px;text-align:center}
+.pips{display:flex;gap:3px;margin-top:10px}
+.pips i{flex:1;height:10px;border:1px solid var(--line)}
+.kp .pips i.on{background:var(--danger);border-color:var(--danger)}.kp .lbl{color:var(--danger)}
+.vp .pips i.on{background:var(--accent);border-color:var(--accent)}.vp .lbl{color:var(--accent)}
+.silver .lbl{color:var(--warn)}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.chip{all:unset;cursor:pointer;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:6px;min-height:48px;padding:8px 12px;background:var(--panel);border:1px solid var(--line);touch-action:manipulation}
+.chip small{color:var(--muted)}
+.chip[aria-pressed=true]{background:var(--warn);border-color:var(--warn);color:var(--on)}
+.chip[aria-pressed=true] small{color:var(--on)}
+.death{background:var(--panel);border:1px solid var(--line);padding:12px 14px;margin-bottom:12px}
+.death .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
+.death .lbl{font:700 15px var(--head)}
+.boxes{display:flex;gap:6px}
+.box{all:unset;cursor:pointer;width:44px;height:44px;border:1px solid var(--line);display:grid;place-items:center;font-size:20px;touch-action:manipulation}
+.box[aria-pressed=true]{background:var(--fg);color:var(--on)}
+.bad .box[aria-pressed=true]{background:var(--danger)}
+.attr{background:var(--panel);border:1px solid var(--line);margin-bottom:10px}
+.attr header{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:10px 14px 0}
+.an{font:700 15px var(--head);color:var(--accent)}
+.av{font-size:26px;font-weight:600;color:var(--accent)}
+.ah{margin:0;padding:0 14px 6px;color:var(--muted);font-size:.92rem}
+.attr .state{display:none;margin:0 14px 8px;font-size:.88rem;color:var(--on);background:var(--warn);padding:2px 8px}
+.attr.dis .state{display:block}
+.attr ul{list-style:none;margin:0;padding:0}
+.attr li{border-top:1px solid var(--line)}
+.attr summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 36px;gap:8px;align-items:center;padding:11px 14px;min-height:48px}
+.attr summary::-webkit-details-marker{display:none}
+.attr summary span::after{content:" ›";color:var(--muted)}
+.attr details[open] summary span::after{content:" ⌄"}
+.attr summary b{font-size:19px;text-align:right}
+.attr summary em{display:block;font-style:normal;font-size:.8rem;color:var(--warn)}
+.attr details p{margin:0;padding:0 14px 12px;color:var(--muted);font-size:.95rem}
+.card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);padding:6px 16px 10px;margin-bottom:12px}
+.card h3{font-size:1rem;color:var(--accent);margin:8px 0 0}
+.card .en{font-size:.88rem;color:var(--muted)}
+.wpn h3{color:var(--fg)}
+.wpn dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:8px 0 4px}
+.wpn dt{font-size:12px;color:var(--muted)}.wpn dd{margin:0;font-weight:600}
+.wpn p{margin:4px 0;color:var(--muted);font-size:.95rem}
+details.rule{border-top:1px solid var(--line)}
+details.rule:last-of-type{border-bottom:1px solid var(--line)}
+details.rule summary{cursor:pointer;padding:12px 0;font:700 14px var(--head);color:var(--warn);min-height:44px}
+details.rule ul,details.rule ol{padding-left:1.3em;margin:0 0 12px}
+details.rule li{margin:4px 0}
+textarea{width:100%;min-height:120px;background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:10px;font:16px var(--serif);resize:vertical}
+.unlock{display:flex;gap:8px}
+.unlock input{flex:1;min-width:0;min-height:48px;background:var(--panel);border:1px solid var(--line);color:var(--fg);font:18px var(--serif);letter-spacing:.08em;text-transform:uppercase;padding:10px 12px}
+.unlock button{font:700 14px var(--head);background:var(--accent);color:var(--on);border:0;padding:0 16px;cursor:pointer}
+.msg{font-size:15px;min-height:1.5em;margin:6px 0 12px;color:var(--muted)}
+.msg.bad{color:var(--danger)}.msg.ok{color:var(--accent)}
+.secret{scroll-margin-top:60px;animation:in .4s ease-out}
+.secret img{display:block;width:100%;height:auto;margin:8px 0;border:1px solid var(--line)}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+.again{all:unset;cursor:pointer;display:block;box-sizing:border-box;width:100%;padding:14px 16px;margin-bottom:10px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--warn);font:700 16px var(--head);color:var(--warn)}
+button:focus-visible,input:focus-visible,summary:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:2px}
+.foot{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+.foot button{all:unset;cursor:pointer;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){.secret{animation:none}}</style></head><body>
+<div class="top"><a href="index.html">‹ Alla</a><b>Krisanna</b></div>
+<main class="wrap">
+  <section class="hero">
+    <h1>Krisanna den Djärva</h1>
+    <div class="sub">Halvling · Tjuv · Ung</div>
+    <dl class="facts">
+      <div><dt>Förflyttning</dt><dd>12 m</dd></div>
+      <div><dt>Skadebonus STY</dt><dd>—</dd></div>
+      <div><dt>Skadebonus SMI</dt><dd>T6</dd></div>
+    </dl>
+  </section>
+
+  <h2>Status</h2>
+  <div class="track kp" data-k="kp" data-max="13">
+    <div class="row"><span class="lbl">Kroppspoäng</span><span class="ctl"><button aria-label="Minska Kroppspoäng">−</button><output>13</output><button aria-label="Öka Kroppspoäng">+</button></span></div>
+    <div class="pips"></div></div>
+  <div class="track vp" data-k="vp" data-max="15">
+    <div class="row"><span class="lbl">Viljepoäng</span><span class="ctl"><button aria-label="Minska Viljepoäng">−</button><output>15</output><button aria-label="Öka Viljepoäng">+</button></span></div>
+    <div class="pips"></div></div>
+  <div class="death">
+    <span class="lbl">Dödsslag</span>
+    <div class="row"><span>Lyckade</span><span class="boxes" data-k="dsOk"><button class="box" aria-label="Lyckat dödsslag 1">✓</button><button class="box" aria-label="Lyckat dödsslag 2">✓</button><button class="box" aria-label="Lyckat dödsslag 3">✓</button></span></div>
+    <div class="row bad"><span>Misslyckade</span><span class="boxes" data-k="dsNo"><button class="box" aria-label="Misslyckat dödsslag 1">✕</button><button class="box" aria-label="Misslyckat dödsslag 2">✕</button><button class="box" aria-label="Misslyckat dödsslag 3">✕</button></span></div>
+  </div>
+  <h2>Tillstånd</h2>
+  <div class="chips"><button class="chip" data-cond="STY" aria-pressed="false">Utmattad <small>STY</small></button><button class="chip" data-cond="FYS" aria-pressed="false">Krasslig <small>FYS</small></button><button class="chip" data-cond="SMI" aria-pressed="false">Omtöcknad <small>SMI</small></button><button class="chip" data-cond="INT" aria-pressed="false">Arg <small>INT</small></button><button class="chip" data-cond="PSY" aria-pressed="false">Rädd <small>PSY</small></button><button class="chip" data-cond="KAR" aria-pressed="false">Uppgiven <small>KAR</small></button></div>
+  <div class="chips"><button class="chip" data-rest="quick" aria-pressed="false">Snabb vila tagen</button><button class="chip" data-rest="short" aria-pressed="false">Kort vila tagen</button></div>
+
+  <h2>Vem du är</h2>
+  <p>Du växte upp i en stad i väster. Du hittade på ständiga upptåg och utmanade dina kamrater att ta allt större risker i gränderna. Du blev en flink ficktjuv och begick senare inbrott i ståtliga residens. Du blev fångad och kastad i fängelsehåla, men rymde kort därpå. Nu håller du dig borta från staden och söker nya utmaningar och upplevelser tillsammans med en skara äventyrare. Ni är nu på väg mot Dimmornas dal, där det sägs finnas gott om bägge delarna.</p>
+  <p><strong>Utseende:</strong> Oskyldig uppsyn. Ständigt observerande med en finurlig blick. Lätt och ljudlös på foten. Du ser möjligheter i alla situationer.</p>
+  <p><strong>Svaghet:</strong> Våghals. Du tar alltid stora risker utan tanke på följderna.</p>
+
+  <h2>Vapen &amp; rustning</h2>
+  <div class="card wpn"><h3>Dolk</h3>
+    <dl><div><dt>Skada</dt><dd>T8</dd></div><div><dt>Räckvidd</dt><dd>8</dd></div><div><dt>Grepp</dt><dd>1h</dd></div><div><dt>Brytvärde</dt><dd>9</dd></div></dl><p>Smidig, stickande, huggande</p></div><div class="card wpn"><h3>Kniv</h3>
+    <dl><div><dt>Skada</dt><dd>T8</dd></div><div><dt>Räckvidd</dt><dd>8</dd></div><div><dt>Grepp</dt><dd>1h</dd></div><div><dt>Brytvärde</dt><dd>6</dd></div></dl><p>Smidig, stickande</p></div><div class="card wpn"><h3>Kniv</h3>
+    <dl><div><dt>Skada</dt><dd>T8</dd></div><div><dt>Räckvidd</dt><dd>8</dd></div><div><dt>Grepp</dt><dd>1h</dd></div><div><dt>Brytvärde</dt><dd>6</dd></div></dl><p>Smidig, stickande</p></div>
+  <div class="card wpn"><h3>Läder</h3><dl><div><dt>Skydd</dt><dd>1</dd></div></dl></div>
+
+  <h2>Förmågor</h2>
+  <div class="card"><h3>Svårfångad</h3><div class="en">Viljepoäng: 3</div><p>Du kan aktivera denna förmåga när du ska ducka för en attack och får då en fördel på slaget mot UNDVIKA.</p></div><div class="card"><h3>Tjuvhugg</h3><div class="en">Viljepoäng: 3</div><p>Du kan aktivera denna förmåga när du i närstrid angriper en fiende som befinner sig inom 2 meter från en annan rollperson. Angreppet räknas då som en smygattack, vilket innebär att angreppet inte kan duckas eller pareras, du får en fördel på slaget och antalet tärningar för skadan ökar med ett (exempelvis 2T8 i stället för T8). Förmågan kan enbart användas med ett smidigt vapen. Att aktivera förmågan räknas inte som en handling.</p></div>
+  
+
+  <h2>Grundegenskaper &amp; färdigheter</h2>
+  <p style="color:var(--muted);font-size:.95rem">Slå T20, lika med eller under siffran lyckas. Tryck på en färdighet för att läsa vad den används till.</p>
+  <section class="attr" data-a="STY">
+      <header><span class="an">Styrka</span><span class="av">8</span></header>
+      <p class="ah">Rå kroppslig muskelkraft.</p><p class="state">Utmattad: nackdel på allt här</p>
+      <ul><li><details><summary><span>Hantverk</span><b>4</b></summary><p>Bygga och laga saker, till exempel ett trasigt vapen.</p></details></li><li><details><summary><span>Hammare <small style="color:var(--muted)">(vapen)</small></span><b>4</b></summary><p>Attackera och parera med hammare. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Slagsmål <small style="color:var(--muted)">(vapen)</small></span><b>4</b></summary><p>Attackera och parera med slagsmål. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Spjut <small style="color:var(--muted)">(vapen)</small></span><b>4</b></summary><p>Attackera och parera med spjut. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Svärd <small style="color:var(--muted)">(vapen)</small></span><b>4</b></summary><p>Attackera och parera med svärd. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Yxa <small style="color:var(--muted)">(vapen)</small></span><b>4</b></summary><p>Attackera och parera med yxa. Kastvapen slås också mot vapenfärdigheten.</p></details></li></ul>
+    </section><section class="attr" data-a="FYS">
+      <header><span class="an">Fysik</span><span class="av">13</span></header>
+      <p class="ah">Fysisk kondition och motståndskraft.</p><p class="state">Krasslig: nackdel på allt här</p>
+      
+    </section><section class="attr" data-a="SMI">
+      <header><span class="an">Smidighet</span><span class="av">18</span></header>
+      <p class="ah">Kroppskontroll, snabbhet och finmotorik.</p><p class="state">Omtöcknad: nackdel på allt här</p>
+      <ul><li><details><summary><span>Fingerfärdighet</span><b>14</b></summary><p>Dyrka lås, desarmera fällor, stjäla ur fickor. Lirka upp lönndörrar.</p></details></li><li><details><summary><span>Hoppa &amp; klättra</span><b>14</b></summary><p>Klättra, hoppa långt och mildra fall.</p></details></li><li><details><summary><span>Jakt &amp; fiske</span><b>7</b></summary><p>Skaffa mat i naturen.</p></details></li><li><details><summary><span>Rida</span><b>7</b></summary><p>Hantera riddjur.</p></details></li><li><details><summary><span>Simma</span><b>7</b></summary><p>Hålla dig flytande, dyka och hitta rätt under vatten.</p></details></li><li><details><summary><span>Smyga</span><b>14</b></summary><p>Röra dig tyst och obemärkt, och göra smygattacker.</p></details></li><li><details><summary><span>Undvika</span><b>14</b></summary><p>Ducka för attacker och slippa frislag.</p></details></li><li><details><summary><span>Armborst <small style="color:var(--muted)">(vapen)</small></span><b>7</b></summary><p>Attackera och parera med armborst. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Kniv <small style="color:var(--muted)">(vapen)</small></span><b>14</b></summary><p>Attackera och parera med kniv. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Pilbåge <small style="color:var(--muted)">(vapen)</small></span><b>7</b></summary><p>Attackera och parera med pilbåge. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Slunga <small style="color:var(--muted)">(vapen)</small></span><b>7</b></summary><p>Attackera och parera med slunga. Kastvapen slås också mot vapenfärdigheten.</p></details></li><li><details><summary><span>Stav <small style="color:var(--muted)">(vapen)</small></span><b>7</b></summary><p>Attackera och parera med stav. Kastvapen slås också mot vapenfärdigheten.</p></details></li></ul>
+    </section><section class="attr" data-a="INT">
+      <header><span class="an">Intelligens</span><span class="av">14</span></header>
+      <p class="ah">Sinnesskärpa, logik och förnuft.</p><p class="state">Arg: nackdel på allt här</p>
+      <ul><li><details><summary><span>Bestiologi</span><b>6</b></summary><p>Känna till monster och djur, och deras svagheter.</p></details></li><li><details><summary><span>Finna dolda ting</span><b>12</b></summary><p>Leta upp det som är gömt: lönndörrar, fällor, skatter.</p></details></li><li><details><summary><span>Främmande språk</span><b>6</b></summary><p>Tyda okända språk och gamla skrifter.</p></details></li><li><details><summary><span>Läkekonst</span><b>6</b></summary><p>Rädda den som är på noll KP, och vårda under kort vila.</p></details></li><li><details><summary><span>Myter &amp; legender</span><b>6</b></summary><p>Minnas sagor, historia och gamla berättelser.</p></details></li><li><details><summary><span>Sjökunnighet</span><b>6</b></summary><p>Segla, navigera och kunna allt om skepp.</p></details></li><li><details><summary><span>Upptäcka fara</span><b>12</b></summary><p>Märka bakhåll och faror i tid. Hitta fienden i mörker.</p></details></li><li><details><summary><span>Vildmarksvana</span><b>6</b></summary><p>Hitta rätt, göra upp eld och stå emot kyla.</p></details></li></ul>
+    </section><section class="attr" data-a="PSY">
+      <header><span class="an">Psyke</span><span class="av">15</span></header>
+      <p class="ah">Viljestyrka och mentalt fokus.</p><p class="state">Rädd: nackdel på allt här</p>
+      
+    </section><section class="attr" data-a="KAR">
+      <header><span class="an">Karisma</span><span class="av">10</span></header>
+      <p class="ah">Personlig utstrålning och empati.</p><p class="state">Uppgiven: nackdel på allt här</p>
+      <ul><li><details><summary><span>Bluffa</span><b>10</b></summary><p>Ljuga och lura någon.</p></details></li><li><details><summary><span>Köpslå</span><b>5</b></summary><p>Pruta och göra affärer.</p></details></li><li><details><summary><span>Uppträda</span><b>5</b></summary><p>Sjunga, spela och underhålla.</p></details></li><li><details><summary><span>Övertala</span><b>5</b></summary><p>Få andra med på din linje. Få en kamrat på noll KP att kämpa på.</p></details></li></ul>
+    </section>
+  
+  <h2>Regler</h2>
+  <details class="rule"><summary>Att slå tärning</summary><ul>
+    <li>Slå <strong>T20</strong>. Lika med eller under ditt FV lyckas.</li>
+    <li><strong>1 = drakslag:</strong> extra lyckat. <strong>20 = demonslag:</strong> misslyckas alltid och kan inte pressas.</li>
+    <li><strong>Fördel:</strong> slå två T20, räkna den lägsta. <strong>Nackdel:</strong> räkna den högsta. En fördel tar ut en nackdel.</li>
+    <li><strong>Hjälpa:</strong> säg till innan tärningen slås. Den du hjälper får en fördel. Bara en person kan hjälpa per slag, och i strid kostar det din handling.</li>
+    <li>Du har som regel en chans på samma sak. Prova något annat, eller låt någon annan försöka.</li>
+  </ul></details>
+  <details class="rule"><summary>Pressa slaget</summary><ul>
+    <li>Misslyckades du? Slå om. Det nya resultatet gäller, vad det än visar.</li>
+    <li>Direkt efter tar du ett <strong>tillstånd</strong> du inte redan har, och förklarar hur det uppstod.</li>
+    <li>Ett tillstånd ger nackdel på allt som bygger på dess grundegenskap.</li>
+    <li>Demonslag kan inte pressas. Inte dödsslag heller.</li>
+  </ul></details>
+  <details class="rule"><summary>Din tur i strid</summary><ul>
+    <li>Alla drar ett initiativkort varje runda. Lägst börjar. Du får <strong>förflytta dig och göra en handling</strong>, i valfri ordning.</li>
+    <li><strong>Avvakta:</strong> byt kort med någon som ligger efter dig.</li>
+    <li><strong>Handlingar:</strong> sprinta (dubbel förflyttning), attackera, plocka upp något, hjälpa, första hjälpen, kämpa på, dyrka lås, använda föremål, aktivera förmåga, lägga besvärjelse, snabb vila.</li>
+    <li><strong>Fria handlingar</strong> (en av varje på din tur): dra vapen, kasta dig ner eller resa dig, släppa något, ropa några ord.</li>
+    <li><strong>Frislag:</strong> går du frivilligt bort från en fiende inom 2 m slår du UNDVIKA. Misslyckas du får fienden en extra attack.</li>
+    <li>En ruta på kartan är 2×2 meter.</li>
+  </ul></details>
+  <details class="rule"><summary>Attackera</summary><ul>
+    <li><strong>Närstrid:</strong> inom 2 m (4 m med långt vapen). Slå mot vapenfärdigheten och lägg till skadebonus vid träff.</li>
+    <li><strong>Avstånd:</strong> nackdel om fienden står inom 2 m eller är delvis skymd. Dubbel räckvidd går med nackdel.</li>
+    <li><strong>Drakslag = kritisk träff:</strong> krävs drakslag för att parera eller ducka. Välj dubbla skadetärningar, eller att stickskada går förbi rustningen. I närstrid kan du i stället attackera en annan fiende direkt.</li>
+    <li><strong>Liggande fiende:</strong> fördel och T6 extra i skada.</li>
+    <li><strong>Knuffa:</strong> är din STY-skadebonus minst lika hög som fiendens kan du knuffa den 2 m vid träff (inte monster).</li>
+    <li><strong>Smygattack:</strong> slå SMYGA (nackdel för att komma inom 2 m). Lyckas du får du välja initiativkort och fördel, och målet kan inte ducka eller parera. Smidigt vapen ger en skadetärning extra.</li>
+  </ul></details>
+  <details class="rule"><summary>Parera och ducka</summary><ul>
+    <li>Bägge sker <strong>utanför din tur</strong> och ersätter den, så du måste ha turen kvar. Säg till innan skadan slås.</li>
+    <li><strong>Parera:</strong> slå mot vapnets FV, med draget vapen eller sköld. Är skadan högre än brytvärdet går vapnet sönder. Avståndsattacker kräver sköld. Monster kan som regel inte pareras.</li>
+    <li><strong>Ducka:</strong> slå UNDVIKA. Lyckas du kan du även flytta dig 2 m utan frislag. Går oftast att göra mot monster.</li>
+  </ul></details>
+  <details class="rule"><summary>Noll KP och dödsslag</summary><ul>
+    <li>På noll KP faller du. På din tur slår du <strong>dödsslag</strong> mot FYS varje runda.</li>
+    <li><strong>Tre lyckade:</strong> du får T6 KP. <strong>Tre misslyckade:</strong> du dör. Drakslag räknas som två lyckade, demonslag som två misslyckade.</li>
+    <li>Mer skada på noll KP = ett automatiskt misslyckat dödsslag.</li>
+    <li><strong>Rädda liv:</strong> någon intill slår LÄKEKONST (handling). Du får T6 KP.</li>
+    <li><strong>Kämpa på:</strong> någon inom 10 m kan ÖVERTALA dig att fortsätta slåss. Du slår dödsslag ändå.</li>
+    <li>Går en enda skada ner till minus ditt hela KP-värde dör du direkt.</li>
+  </ul></details>
+  <details class="rule"><summary>Vila</summary><ul>
+    <li><strong>Snabb vila</strong> (en runda): T6 VP. En gång per skift.</li>
+    <li><strong>Kort vila</strong> (en kvart): T6 KP (2T6 om någon vårdar dig och klarar LÄKEKONST), T6 VP och ett valfritt tillstånd. En gång per skift. Minnessaken ger ett extra tillstånd en gång per spelmöte.</li>
+    <li><strong>Lång vila</strong> (ett skift, säker plats): allt läks.</li>
+  </ul></details>
+  <details class="rule"><summary>Mörker, vatten och fall</summary><ul>
+    <li><strong>Mörker:</strong> ingen sprint och inga avståndsattacker. För närstrid måste du först klara UPPTÄCKA FARA.</li>
+    <li><strong>Fackla:</strong> lyser 10 m, kräver en hand, tänds med en handling. Efter varje kvart slår du T6, på en etta slocknar den.</li>
+    <li><strong>Vatten:</strong> halv förflyttning, nackdel i närstrid, inga avståndsattacker. Ringbrynja eller plåt ger nackdel på SIMMA och slag varje runda för att hålla dig flytande.</li>
+    <li><strong>Under vatten:</strong> slå FYS varje runda för att hålla andan. Misslyckas du tar du T6 skada per runda.</li>
+    <li><strong>Fall:</strong> T6 krosskada per 2 meter, avrundat nedåt. HOPPA &amp; KLÄTTRA halverar. Rustning skyddar inte.</li>
+  </ul></details>
+  <details class="rule"><summary>Skräck</summary>
+    <p>Slå mot PSY (går att pressa). Misslyckas du, slå T8:</p><ol>
+    <li><strong>Kraftlös:</strong> förlorar 2T6 VP och blir Uppgiven.</li>
+    <li><strong>Skakis:</strong> blir Rädd.</li>
+    <li><strong>Flämtar:</strong> blir Utmattad.</li>
+    <li><strong>Blek:</strong> du och alla rollpersoner inom 10 m och synhåll blir Rädda.</li>
+    <li><strong>Skrik:</strong> alla som hör dig utsätts också för en skräckattack.</li>
+    <li><strong>Vredesmod:</strong> du måste angripa källan på din nästa tur, och blir Arg.</li>
+    <li><strong>Paralyserad:</strong> ingen handling eller förflyttning nästa tur. Slå PSY inför varje tur för att bryta det.</li>
+    <li><strong>Vild panik:</strong> du måste sprinta bort nästa tur. Slå PSY inför varje tur för att sluta fly.</li>
+  </ol></details>
+
+  <h2>Utrustning</h2>
+  <div class="card">
+    <p><strong>Packning</strong> (bär 4): Dyrkar, Fackla, Rep.</p>
+    <p><strong>Småsaker:</strong> Elddon.</p>
+    <p><strong>Minnessak:</strong> En skattkarta som du ”hittat”.</p>
+  </div>
+  <div class="track silver" data-k="silver" data-max="9999" data-start="2">
+    <div class="row"><span class="lbl">Silvermynt</span><span class="ctl"><button aria-label="Minska silvermynt">−</button><output>2</output><button aria-label="Öka silvermynt">+</button></span></div>
+  </div>
+  <div class="track silver" data-k="skatt" data-max="9999" data-start="0">
+    <div class="row"><span class="lbl">Skattkort</span><span class="ctl"><button aria-label="Minska skattkort">−</button><output>0</output><button aria-label="Öka skattkort">+</button></span></div>
+  </div>
+
+  <h2>Anteckningar</h2>
+  <textarea id="notes" aria-label="Anteckningar" placeholder="Saker du hittat, gåtor, vilka som skadat dig..."></textarea>
+
+  <div class="foot">Sparas bara i den här telefonen · <button id="reset">Nollställ sidan</button></div>
+</main>
+<script>
+(function(){
+const KEY='dod:krisanna:';
+const ls={get(k,d){try{const v=localStorage.getItem(KEY+k);return v===null?d:JSON.parse(v)}catch{return d}},set(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch{}}};
+document.querySelectorAll('.track').forEach(t=>{
+  const k=t.dataset.k,max=+t.dataset.max,out=t.querySelector('output'),pips=t.querySelector('.pips');
+  let v=ls.get(k,t.dataset.start!==undefined?+t.dataset.start:max);
+  if(pips)pips.innerHTML='<i></i>'.repeat(max);
+  const draw=()=>{out.textContent=v;if(pips)[...pips.children].forEach((p,i)=>p.classList.toggle('on',i<v));ls.set(k,v)};
+  const [minus,plus]=t.querySelectorAll('button');
+  minus.onclick=()=>{v=Math.max(0,v-1);draw()};plus.onclick=()=>{v=Math.min(max,v+1);draw()};
+  draw();
+});
+document.querySelectorAll('.boxes').forEach(b=>{
+  const k=b.dataset.k,bs=[...b.children];let v=ls.get(k,0);
+  const draw=()=>{bs.forEach((x,i)=>x.setAttribute('aria-pressed',i<v));ls.set(k,v)};
+  bs.forEach((x,i)=>x.onclick=()=>{v=(v===i+1)?i:i+1;draw()});
+  draw();
+});
+const conds=ls.get('conds',{});
+document.querySelectorAll('[data-cond]').forEach(c=>{
+  const a=c.dataset.cond,sec=document.querySelector('.attr[data-a='+a+']');
+  const draw=()=>{c.setAttribute('aria-pressed',!!conds[a]);sec.classList.toggle('dis',!!conds[a])};
+  c.onclick=()=>{conds[a]=!conds[a];ls.set('conds',conds);draw()};draw();
+});
+const rest=ls.get('rest',{});
+document.querySelectorAll('[data-rest]').forEach(c=>{
+  const a=c.dataset.rest,draw=()=>c.setAttribute('aria-pressed',!!rest[a]);
+  c.onclick=()=>{rest[a]=!rest[a];ls.set('rest',rest);draw()};draw();
+});
+const notes=document.getElementById('notes');notes.value=ls.get('notes','');notes.oninput=()=>ls.set('notes',notes.value);
+document.getElementById('reset').onclick=()=>{if(!confirm('Nollställa den här rollpersonen?'))return;
+  try{Object.keys(localStorage).filter(k=>k.startsWith(KEY)).forEach(k=>localStorage.removeItem(k))}catch{};location.reload()};
+})();
+</script>
+</body></html>
